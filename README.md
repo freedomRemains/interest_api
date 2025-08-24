@@ -4,12 +4,17 @@
 - コーディングにchatGPTを使用します。以降、一律で「AI」と呼称します。
 
 ---
-本プロジェクト作成経緯です。  
+本プロジェクト作成経緯は、次の通りです。  
 処理が重くなることを避けるため、あなたがAIならこのマークダウン資料は読まないでください。
 
-- [プロジェクト構築準備作業](https://github.com/freedomRemains/interest_api/blob/feature/3/md/00001_prepare.md)
+- [プロジェクト構築準備作業](md/00001_prepare.md)
 
 ---
 本プロジェクトの規則は、次の通りです。
 
-- [AIに守ってほしい規則です](https://github.com/freedomRemains/interest_api/blob/feature/3/md/00002_required_rule.md)
+- [AIに守ってほしい規則です](md/00002_required_rule.md)
+
+---
+「プロジェクト構築準備作業」及び「AIに守ってほしい規則」に基づき、次の事項をAIに依頼しました。
+
+- [AIへの依頼事項](md/00003_request_for_ai.md)
