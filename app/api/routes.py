@@ -5,7 +5,12 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
-from ..db.crud import create_interest, get_interests_with_items, logical_delete_interest, update_interest
+from ..db.crud import (
+    create_interest,
+    get_interests_with_items,
+    logical_delete_interest,
+    update_interest,
+)
 from ..db.models import Interest
 from ..db.session import SessionLocal
 from .schemas import InterestCreate, InterestOut, InterestUpdate
@@ -75,8 +80,12 @@ def create_interest_endpoint(payload: InterestCreate, db: Session = Depends(get_
 
 
 @router.put("/interests/{interest_id}", response_model=InterestOut)
-def update_interest_endpoint(interest_id: int, payload: InterestUpdate, db: Session = Depends(get_db)) -> InterestOut:
-    updated = update_interest(db, interest_id=interest_id, title=payload.title, updated_by=payload.updated_by)
+def update_interest_endpoint(
+    interest_id: int, payload: InterestUpdate, db: Session = Depends(get_db)
+) -> InterestOut:
+    updated = update_interest(
+        db, interest_id=interest_id, title=payload.title, updated_by=payload.updated_by
+    )
     if not updated:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Interest not found")
     it_dict = {

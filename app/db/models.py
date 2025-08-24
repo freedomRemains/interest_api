@@ -12,7 +12,9 @@ from .base import Base
 class Interest(Base):
     __tablename__ = "INTEREST"
 
-    interest_id: Mapped[int] = mapped_column("INTEREST_ID", Integer, primary_key=True, autoincrement=True)
+    interest_id: Mapped[int] = mapped_column(
+        "INTEREST_ID", Integer, primary_key=True, autoincrement=True
+    )
     title: Mapped[Optional[str]] = mapped_column("TITLE", String(256))
     version: Mapped[Optional[int]] = mapped_column("VERSION", Integer, default=1)
     is_deleted: Mapped[int] = mapped_column("IS_DELETED", Integer, default=0)
@@ -36,7 +38,9 @@ class Item(Base):
     article: Mapped[Optional[str]] = mapped_column("ARTICLE", Text)
     link: Mapped[Optional[str]] = mapped_column("LINK", String(1024))
     file_path: Mapped[Optional[str]] = mapped_column("FILE_PATH", String(1024))
-    interest_id: Mapped[Optional[int]] = mapped_column("INTEREST_ID", ForeignKey("INTEREST.INTEREST_ID"))
+    interest_id: Mapped[Optional[int]] = mapped_column(
+        "INTEREST_ID", ForeignKey("INTEREST.INTEREST_ID")
+    )
     version: Mapped[Optional[int]] = mapped_column("VERSION", Integer, default=1)
     is_deleted: Mapped[int] = mapped_column("IS_DELETED", Integer, default=0)
     created_by: Mapped[Optional[str]] = mapped_column("CREATED_BY", String(128))

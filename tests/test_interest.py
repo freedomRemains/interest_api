@@ -8,8 +8,8 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app.main import app
 from app.db.base import Base
+from app.main import app
 
 
 @pytest.fixture(scope="function", autouse=True)
@@ -53,7 +53,9 @@ def test_interest_crud_flow():
     assert len(data) == 1
     assert data[0]["INTEREST_ID"] == interest_id
 
-    res = client.put(f"/api/interests/{interest_id}", json={"title": "Updated", "updated_by": "tester2"})
+    res = client.put(
+        f"/api/interests/{interest_id}", json={"title": "Updated", "updated_by": "tester2"}
+    )
     assert res.status_code == 200
     assert res.json()["TITLE"] == "Updated"
 

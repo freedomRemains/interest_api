@@ -32,7 +32,9 @@ def create_interest(db: Session, title: str, created_by: Optional[str] = None) -
     return interest
 
 
-def update_interest(db: Session, interest_id: int, title: Optional[str], updated_by: Optional[str]) -> Optional[Interest]:
+def update_interest(
+    db: Session, interest_id: int, title: Optional[str], updated_by: Optional[str]
+) -> Optional[Interest]:
     stmt = select(Interest).where(Interest.interest_id == interest_id, Interest.is_deleted == 0)
     interest = db.scalar(stmt)
     if not interest:
